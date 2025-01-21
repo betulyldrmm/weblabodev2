@@ -1,3 +1,15 @@
+Bu proje weblabodev2'nin devamıdır.
+Bu proje, güncel haberleri kullanıcı dostu bir arayüzde sunan, kategorilere göre haber listeleme, favorilere ekleme ve kullanıcıların kişiselleştirilmiş bir deneyim yaşamasını sağlayan bir Haber Derleyici Uygulamasıdır.
+Burada:
+Favori haberler listelenir.
+Hava durumu ve döviz kurları görüntülenir.
+Dergi/gazete abonelikleri eklenebilir.
+Favori Haberler: Kullanıcılar, favori haberlerini işaretleyebilir ve favorilere eklenen haberler listede öncelikli olarak görüntülenir.
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
