@@ -1,0 +1,43 @@
+.favorites-page {
+  padding: 20px;
+}
+
+.card {
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+  padding: 10px;
+  display: flex;
+}
+
+.card img {
+  max-width: 150px;
+  margin-right: 20px;
+}
+
+.card-body {
+  flex: 1;
+}
+
+.card-title {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  font-size: 1em;
+  margin-bottom: 10px;
+}
+
+.back-btn {
+  margin-top: 20px;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.back-btn:hover {
+  background-color: #444;
+}

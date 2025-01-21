@@ -1,0 +1,263 @@
+/* Genel Stil */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+  color: #333;
+ 
+}
+
+.header-container {
+  position: relative;
+  height: 180px;
+  width: 100%;
+  background-image: url('./indir8.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 100px;
+}
+
+ .site-title {
+  font-size: 3rem;
+  margin: 0;
+  position: relative;
+  top: 130px;
+  color: #000000;
+}
+
+header .welcome-message {
+  font-size: 1.2rem;
+  margin: 5px 0 0;
+  position: relative;
+  right: 300px;
+  top: 50px;
+  font-size: larger;
+}
+
+.header-container {
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.header-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  width: 100%;
+}
+
+.categories {
+  display: flex;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  justify-content: center;  
+  margin-top: 60px;
+  position: relative;
+  top: 150px;
+  right: 400px
+}
+
+.categories li {
+  cursor: pointer;
+  padding: 5px 10px;
+  background-color: #f8f8f8;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  text-decoration: underline;
+}
+
+.categories li:hover {
+  background-color: #bbb;
+}
+
+.search-bar {
+  padding: 10px;
+  border: 2px solid #2f2f2f;
+  border-radius: 5px;
+  flex-grow: 1;
+  max-width: 300px;
+  margin-left: auto;  /* Sağ tarafa yaslama */
+  margin-top: 30px;
+  position: relative;
+  right: 250px;
+  top: 115px;
+}
+
+
+.logout-btn {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #e77373;
+  color: white;
+  transition: background-color 0.3s;
+  margin-left: 20px;
+  position: relative;
+  top: 30px;
+  left: 400px;
+}
+
+
+
+.divider {
+  margin: 20px 0;
+  border: none;
+  border-top: 2px solid #181818;
+}
+
+
+.content-container {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.main-news {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 20px;
+  flex: 2;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+/* Kart */
+.main-card,
+.small-news-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: white;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.main-card:hover,
+.small-news-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.main-card img,
+.small-news-card img {
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+  object-fit: cover;
+}
+
+.main-card .card-body,
+.small-news-card .small-news-card-body {
+  padding: 15px;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  margin: 0 0 10px;
+}
+
+.card-text {
+  font-size: 1rem;
+  margin: 0 0 15px;
+}
+
+.favorite-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+/* Küçük Haberler */
+.small-news-card {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.small-news-card img {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.small-news-card-title {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.small-news-card-text {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Karanlık Mod */
+
+.abone-btn {
+  background-color: #161b16;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 10px;
+  position: relative;
+  left: 300px;
+  top: 80px;
+}
+
+.abone-btn:hover {
+  background-color: #45a049;
+}
+.widgets-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px; /* Widget'lar arasında boşluk bırakır */
+}
+
+.weather-widget, .currency-widget {
+  flex: 1; /* Her widget'ın eşit şekilde yer kaplamasını sağlama */
+  padding: 10px;
+  border: 2px solid #050505;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  display: flex; 
+  gap: 20px; 
+ 
+}
+
+.city-weather {
+  margin-bottom: 10px;
+}
+
+
+.theme-toggle2 {
+  
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  position: absolute;
+  right: 1200px;
+  bottom: 100px;
+}
+
+
+
+

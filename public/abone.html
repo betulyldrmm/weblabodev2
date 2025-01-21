@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abonelik Sayfası</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('indir10.jpg');
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 500px; /* Genişlik 500px */
+            height: 900px; /* Yükseklik 500px */
+            margin: 20px auto;
+            padding: 10px; /* İç kenar boşlukları */
+            background-color: rgba(255, 255, 255, 0.9); /* Şeffaf arka plan */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow-y: auto; /* İçeriğin taşması durumunda kaydırma */
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #333;
+        }
+
+        .subscription-options,
+        .address-section,
+        .payment-section {
+            margin-top: 20px;
+        }
+
+        .option {
+            margin-bottom: 10px;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        textarea, input[type="text"], input[type="month"], select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        textarea {
+            height: 100px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .error-message {
+            color: red;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .image-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .image-container img {
+            width: 300px;
+            height: auto;
+            margin: 10px;
+        }
+
+        .dynamic-selection {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="image-container">
+            
+        </div>
+
+        <h1>Abonelik Seçiminizi Yapın</h1>
+        <!-- Abonelik Türleri -->
+        <div class="subscription-options">
+            <h2>Abonelik Türleri</h2>
+            <div class="option">
+                <input type="radio" id="gazete" name="abonelik" value="gazete">
+                <label for="gazete">Gazetelik Abonelik-550₺</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="dergi" name="abonelik" value="dergi">
+                <label for="dergi">Dergilik Abonelik-850₺</label>
+            </div>
+        </div>
+
+        <!-- Adres Bilgisi -->
+        <div class="address-section">
+            <h2>Adres Bilgileri</h2>
+            <label for="city">Şehir</label>
+            <select id="city" name="city" onchange="showDistricts()">
+                <option value="">Şehir Seçin</option>
+                <option value="istanbul">İstanbul</option>
+                <option value="ankara">Ankara</option>
+            </select>
+
+            <div id="districts" class="dynamic-selection">
+                <label for="district">İlçe</label>
+                <select id="district" name="district" onchange="showNeighborhoods()">
+                    <option value="">İlçe Seçin</option>
+                </select>
+            </div>
+
+            <div id="neighborhoods" class="dynamic-selection">
+                <label for="neighborhood">Mahalle</label>
+                <select id="neighborhood" name="neighborhood">
+                    <option value="">Mahalle Seçin</option>
+                </select>
+            </div>
+
+            <label for="address">Adres</label>
+            <textarea id="address" name="address" placeholder="Adresinizi girin..." required></textarea>
+        </div>
+<br><br>
+        <!-- Ödeme Bilgisi -->
+        <div class="payment-section">
+            <h2>Ödeme Bilgileri</h2>
+            <label for="card">Kredi Kartı Numarası</label>
+            <input type="text" id="card" name="card" placeholder="Kredi Kartı Numarası" required>
+            <label for="expiry">Son Kullanma Tarihi</label>
+            <input type="month" id="expiry" name="expiry" required>
+            <label for="cvv">CVV</label>
+            <input type="text" id="cvv" name="cvv" placeholder="CVV" required>
+        </div>
+
+        <!-- Gönderme Butonu -->
+        <div class="submit-btn">
+            <button onclick="submitSubscription()">Aboneliği Tamamla</button>
+        </div>
+
+        <div id="error-message" class="error-message"></div>
+    </div>
+
+    <script>
+        const districtsData = {
+            istanbul: ["Kadıköy", "Üsküdar", "Beşiktaş", "Beyoğlu"],
+            ankara: ["Çankaya", "Keçiören", "Mamak", "Sincan"]
+        };
+
+        const neighborhoodsData = {
+            Kadıköy: ["Erenköy", "Fikirtepe", "Kozyatağı"],
+            Üsküdar: ["Altunizade", "Çamlıca", "Beylerbeyi"],
+            Beşiktaş: ["Levent", "Etiler", "Kikiköy"],
+            Beyoğlu: ["Taksim", "Cihangir", "Beyoğlu"],
+            Çankaya: ["Kocatepe", "Bahçelievler", "Aşağı Ayrancı"],
+            Keçiören: ["Yenimahalle", "Ostim", "Çaldıran"],
+            Mamak: ["Güzeltepe", "Akdeniz", "Tuzluçayır"],
+            Sincan: ["Osb", "Eryaman", "Fatih"]
+        };
+
+        // İlçe seçenekleri
+        function showDistricts() {
+            const city = document.getElementById('city').value;
+            const districtsSelect = document.getElementById('district');
+            const districtsDiv = document.getElementById('districts');
+            const neighborhoodsDiv = document.getElementById('neighborhoods');
+
+            districtsSelect.innerHTML = "<option value=''>İlçe Seçin</option>";
+
+            if (city) {
+                const districts = districtsData[city] || [];
+                districts.forEach(district => {
+                    const option = document.createElement('option');
+                    option.value = district;
+                    option.textContent = district;
+                    districtsSelect.appendChild(option);
+                });
+
+                districtsDiv.style.display = 'block';
+                neighborhoodsDiv.style.display = 'none';
+            } else {
+                districtsDiv.style.display = 'none';
+                neighborhoodsDiv.style.display = 'none';
+            }
+        }
+
+        // Mahalle seçenekleri
+        function showNeighborhoods() {
+            const district = document.getElementById('district').value;
+            const neighborhoodsSelect = document.getElementById('neighborhood');
+            const neighborhoods = neighborhoodsData[district] || [];
+            const neighborhoodsDiv = document.getElementById('neighborhoods');
+
+            neighborhoodsSelect.innerHTML = "<option value=''>Mahalle Seçin</option>";
+
+            if (district) {
+                neighborhoods.forEach(neighborhood => {
+                    const option = document.createElement('option');
+                    option.value = neighborhood;
+                    option.textContent = neighborhood;
+                    neighborhoodsSelect.appendChild(option);
+                });
+
+                neighborhoodsDiv.style.display = 'block';
+            } else {
+                neighborhoodsDiv.style.display = 'none';
+            }
+        }
+
+        function submitSubscription() {
+            const abonelik = document.querySelector('input[name="abonelik"]:checked');
+            if (!abonelik) {
+                document.getElementById('error-message').textContent = "Lütfen bir abonelik türü seçin!";
+                return;
+            }
+
+            const city = document.getElementById('city').value;
+            const district = document.getElementById('district').value;
+            const neighborhood = document.getElementById('neighborhood').value;
+            const address = document.getElementById('address').value.trim();
+
+            if (!city || !district || !neighborhood || !address) {
+                document.getElementById('error-message').textContent = "Adres bilgileri eksik!";
+                return;
+            }
+
+            const card = document.getElementById('card').value.trim();
+            const expiry = document.getElementById('expiry').value;
+            const cvv = document.getElementById('cvv').value.trim();
+
+            if (!card || !expiry || !cvv) {
+                document.getElementById('error-message').textContent = "Ödeme bilgileri eksik!";
+                return;
+            }
+
+            document.getElementById('error-message').textContent = "";
+            alert("Abonelik Başarıyla Tamamlandı!");
+        }
+    </script>
+</body>
+</html>
