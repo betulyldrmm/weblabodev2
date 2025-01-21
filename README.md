@@ -1,4 +1,4 @@
-Bu proje weblabodev2'nin devamıdır.
+Bu proje weblabodev'in devamıdır.
 Bu proje, güncel haberleri kullanıcı dostu bir arayüzde sunan, kategorilere göre haber listeleme, favorilere ekleme ve kullanıcıların kişiselleştirilmiş bir deneyim yaşamasını sağlayan bir Haber Derleyici Uygulamasıdır.
 Burada:
 Favori haberler listelenir.
